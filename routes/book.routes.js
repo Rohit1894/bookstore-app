@@ -1,4 +1,5 @@
 import express from "express";
+const router = express.Router();
 
 import {
   getAllBooks,
@@ -7,15 +8,15 @@ import {
   deleteBookById
 } from "../controllers/book.controller.js";
 
-import { authMiddleware } from "../middlewares/auth.middleware.js";
+// import { authMiddleware } from "../middlewares/auth.middleware.js";
 
-const router = express.Router();
+
 
 
 router.get("/", getAllBooks);
 router.get("/:id", getBookById);
 
-router.post("/", authMiddleware, createBook);
-router.delete("/:id", authMiddleware, deleteBookById);
+router.post("/", createBook);
+router.delete("/:id", deleteBookById);
 
 export default router;
